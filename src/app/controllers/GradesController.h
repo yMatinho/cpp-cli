@@ -1,3 +1,4 @@
+#pragma once
 #include "../../requests/Request.h"
 #include "Controller.h"
 
@@ -12,7 +13,7 @@ namespace App
         private:
         public:
             GradesController() : Controller() {}
-            string calculateAverage(Request* req);
+            string calculateAverage(Request req);
         };
     }
 }

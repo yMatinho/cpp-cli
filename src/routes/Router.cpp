@@ -5,7 +5,7 @@ using namespace Routes;
 Router::Router() {}
 Router *Router::get()
 {
-    static Router *instance = new Router();
+    static Router* instance = new Router();
     return instance;
 }
 void Router::add(Route *route)
@@ -28,19 +28,13 @@ vector<Route *> Router::getAll()
 {
     return Router::get()->routes;
 }
-void Router::addRoute(string path, string methodAlias)
+void Router::executeMethod(string alias)
 {
-    Router::get()->add(new Route(path));
-}
-void Router::mapMethod(string alias, ControllerMethod *method) {
-    Router::get()->mappedMethods[alias] = *method;
-
-}
-void Router::executeMethod(string alias) {
     Router::get()->mappedMethods[alias](*(new Request(Router::get()->params)));
 }
 
-void Router::setParams(char* params[]) {
+void Router::setParams(char *params[])
+{
     vector<string> v(params, params + sizeof params);
     Router::get()->params = v;
 }
