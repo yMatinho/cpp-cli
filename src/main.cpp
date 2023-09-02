@@ -1,14 +1,12 @@
 #include "iostream"
-#include "commands/StartProgram.h"
-#include "exceptions/Exception.h"
-#include "widgets/Widget.h"
-#include "widgets/MenuWidget.h"
+#include "app/commands/StartProgram.h"
 #include <vector>
 #include <string>
 #include <stdio.h>
-#include "menu/options/Option.h"
 
 using namespace std;
-int main() {
-    
+int main(int argc, char *argv[]) {
+    Commands::StartProgram::start(argv);
+
+    return 1;
 }
