@@ -17,11 +17,9 @@ void StartProgram::start(char *args[])
     catch (BreakException *e)
     {
         cout << "Saindo...";
-        break;
     }
     catch (Exception *e)
     {
         cout << e->getMessage();
-        break;
     }
 }
