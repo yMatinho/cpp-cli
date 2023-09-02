@@ -13,7 +13,7 @@ namespace App
         private:
         public:
             GradesController() : Controller() {}
-            string calculateAverage(Request req);
+            void calculateAverage(Request req);
         };
     }
 }

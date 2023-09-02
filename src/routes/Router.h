@@ -19,26 +19,24 @@ namespace Routes
     class Router
     {
     private:
-        vector<Route *> routes;
+        map<string, Route *> routes;
         vector<string> params;
 
         Router();
-        void add(Route *route);
-        void remove();
-        Route *peek();
+        void insert(string index, Route *route);
+        void remove(string index);
         bool isEmpty();
-        void executeMethod(string alias);
+        void executeRoute(string alias);
 
     public:
         static Router *get();
-        vector<Route *> getAll();
         void setParams(char *params[]);
         template <typename T>
         void addRoute(string path, ControllerMethod<T> method)
         {
             Route* route = new Route(path);
             route->setMethod<T>(method);
-            Router::get()->add(route);
+            Router::get()->insert(path, route);
         }        
     };
 

@@ -3,6 +3,6 @@
 
 using namespace App::Controllers;
 
-string GradesController::calculateAverage(Request req)
+void GradesController::calculateAverage(Request req)
 {
 }

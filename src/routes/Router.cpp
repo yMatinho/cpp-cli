@@ -8,29 +8,25 @@ Router *Router::get()
     static Router* instance = new Router();
     return instance;
 }
-void Router::add(Route *route)
+void Router::insert(string index, Route *route)
 {
-    this->routes.push_back(route);
+    this->routes[index] = route;
 }
-void Router::remove()
+void Router::remove(string index)
 {
-    this->routes.pop_back();
-}
-Route *Router::peek()
-{
-    return this->routes[this->routes.size() - 1];
+    delete this->routes[index];
 }
 bool Router::isEmpty()
 {
     return this->routes.size() <= 0;
-}
-vector<Route *> Router::getAll()
-{
-    return Router::get()->routes;
 }
 
 void Router::setParams(char *params[])
 {
     vector<string> v(params, params + sizeof params);
     Router::get()->params = v;
+}
+
+void Router::executeRoute(string alias) {
+    this->routes[alias]->execute(*(new Request(this->params)));
 }

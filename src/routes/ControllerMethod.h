@@ -7,4 +7,4 @@
 using namespace Requests;
 
 template <typename T>
-using ControllerMethod = string (T::*)(Request);
+using ControllerMethod = void (T::*)(Request);

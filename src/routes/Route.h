@@ -14,20 +14,22 @@ namespace Routes
     {
     private:
         string path;
-        function<string(Request)> method;
+        function<void(Request)> method;
 
     public:
         Route(string path);
         template <typename T>
         void setMethod(ControllerMethod<T> method)
         {
-            std::function<std::string(Request)> func = [method](Request request)
+            std::function<void(Request)> func = [method](Request request)
             {
                 T controller;
                 return (controller.*method)(request);
             };
             this->method = func;
         }
+
+        void execute(Request req);
         string getPath();
     };
 }

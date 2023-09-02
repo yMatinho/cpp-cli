@@ -9,3 +9,7 @@ string Route::getPath()
 {
     return this->path;
 }
+
+void Route::execute(Request req) {
+    this->method(req);
+}
