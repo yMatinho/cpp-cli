@@ -1,11 +1,11 @@
 #include "Route.h"
 
 using namespace Routes;
-
-Route::Route(string path) {
+Route::Route(string path)
+{
     this->path = path;
 }
-
-string Route::getPath() {
+string Route::getPath()
+{
     return this->path;
 }

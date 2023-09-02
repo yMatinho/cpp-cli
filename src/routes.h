@@ -6,7 +6,6 @@ using namespace App::Controllers;
 
 void routes()
 {
-    Router::get()->addRoute<GradesController>("crypt rot13",
-                                              "GradesController@calculateAverage",
+    Router::get()->addRoute<GradesController>("grade-average",
                                               &App::Controllers::GradesController::calculateAverage);
 }

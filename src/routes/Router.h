@@ -9,11 +9,10 @@
 #include "functional"
 #include "any"
 #include "iostream"
+#include "ControllerMethod.h"
 
 using namespace std;
 using namespace Requests;
-template <typename T>
-using ControllerMethod = string (T::*)(Request);
 
 namespace Routes
 {
@@ -22,7 +21,6 @@ namespace Routes
     private:
         vector<Route *> routes;
         vector<string> params;
-        map<string, function<string(Request)>> mappedMethods;
 
         Router();
         void add(Route *route);
@@ -36,23 +34,12 @@ namespace Routes
         vector<Route *> getAll();
         void setParams(char *params[]);
         template <typename T>
-        void addRoute(string path, string methodAlias, ControllerMethod<T> method)
+        void addRoute(string path, ControllerMethod<T> method)
         {
-            Router::get()->mapMethod<T>(methodAlias, method);
-            Router::get()->add(new Route(path));
-        }
-
-    private:
-        template <typename T>
-        void mapMethod(string alias, ControllerMethod<T> method)
-        {
-            function<string(Request)> func = [method](Request request)
-            {
-                T controller;
-                return (controller.*method)(request);
-            };
-            Router::get()->mappedMethods[alias] = func;
-        }
+            Route* route = new Route(path);
+            route->setMethod<T>(method);
+            Router::get()->add(route);
+        }        
     };
 
 }

@@ -28,10 +28,6 @@ vector<Route *> Router::getAll()
 {
     return Router::get()->routes;
 }
-void Router::executeMethod(string alias)
-{
-    Router::get()->mappedMethods[alias](*(new Request(Router::get()->params)));
-}
 
 void Router::setParams(char *params[])
 {
