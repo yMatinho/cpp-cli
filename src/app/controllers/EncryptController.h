@@ -13,7 +13,8 @@ namespace App
         private:
         public:
             EncryptController() : Controller() {}
-            void encrypt(Request req);
+            void encryptRot13(Request req);
+            void encryptEnigmax(Request req);
             void randomAlphabet(Request req);
         };
     }
