@@ -12,15 +12,15 @@ Router *Router::get()
 }
 void Router::insert(string index, Route *route)
 {
-    this->routes[index] = route;
+    Router::get()->routes[index] = route;
 }
 void Router::remove(string index)
 {
-    delete this->routes[index];
+    delete Router::get()->routes[index];
 }
 bool Router::isEmpty()
 {
-    return this->routes.size() <= 0;
+    return Router::get()->routes.size() <= 0;
 }
 
 void Router::setParams(int paramsSize, char *params[])
@@ -33,30 +33,30 @@ void Router::setParams(int paramsSize, char *params[])
             v.push_back(params[i]);
     }
 
-    if (this->params.size() > 0)
+    if (v.size() > 0)
         Router::get()->params = v;
 }
 
 void Router::executeRoute()
 {
-    const string requestedRoute = this->getRequestedRoute();
-    if (!this->routeExists(requestedRoute))
+    const string requestedRoute = Router::get()->getRequestedRoute();
+    if (!Router::get()->routeExists(requestedRoute))
         throw new Exceptions::Exception("Rota não existe!");
 
-    this->routes[requestedRoute]->execute(*(new Request(this->params)));
+    Router::get()->routes[requestedRoute]->execute(*(new Request(Router::get()->params)));
 }
 
 string Router::getRequestedRoute()
 {
-    return this->hasPassedRoute() ? this->params[0] : DEFAULT_APP_ROUTE;
+    return Router::get()->hasPassedRoute() ? Router::get()->params[0] : DEFAULT_APP_ROUTE;
 }
 
 bool Router::hasPassedRoute()
 {
-    return this->params.size() > 0;
+    return Router::get()->params.size() > 0;
 }
 
 bool Router::routeExists(string route)
 {
-    return this->routes[route] != nullptr;
+    return Router::get()->routes[route] != nullptr;
 }

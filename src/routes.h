@@ -7,6 +7,6 @@ using namespace App::Controllers;
 
 void routes()
 {
-    Router::get()->addRoute<HelloWorldController>("", &App::Controllers::HelloWorldController::hello);
     Router::get()->addRoute<GradesController>("grade-average", &App::Controllers::GradesController::calculateAverage);
+    Router::get()->addRoute<HelloWorldController>("", &App::Controllers::HelloWorldController::hello);
 }
