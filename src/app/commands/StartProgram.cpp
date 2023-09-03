@@ -19,7 +19,7 @@ void StartProgram::start(int argc, char *argv[])
     }
     catch (BreakException *e)
     {
-        cout << "Saindo..." << "\n\n";
+        cout << "Breaking the execution..." << "\n\n";
     }
     catch (Exception *e)
     {
