@@ -1,11 +1,13 @@
 #include "Router.h"
+#include "iostream"
+#include "../app/exceptions/Exception.h"
 
 using namespace Routes;
 
 Router::Router() {}
 Router *Router::get()
 {
-    static Router* instance = new Router();
+    static Router *instance = new Router();
     return instance;
 }
 void Router::insert(string index, Route *route)
@@ -23,10 +25,26 @@ bool Router::isEmpty()
 
 void Router::setParams(char *params[])
 {
-    vector<string> v(params, params + sizeof params);
+    const int maxParameters = 10;
+    vector<string> v;
+
+    for (int i = 1; i < maxParameters; ++i)
+    {
+        if (params[i] != nullptr)
+            v.push_back(params[i]);
+    }
+
     Router::get()->params = v;
 }
 
-void Router::executeRoute(string alias) {
-    this->routes[alias]->execute(*(new Request(this->params)));
+void Router::executeRoute()
+{
+    if (!this->routeExists(this->params[0]))
+        throw new Exceptions::Exception("Rota não existe!");
+    this->routes[this->params[0]]->execute(*(new Request(this->params)));
+}
+
+bool Router::routeExists(string route)
+{
+    return this->routes[route] != nullptr;
 }

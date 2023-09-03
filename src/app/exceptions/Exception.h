@@ -12,7 +12,7 @@ namespace Exceptions {
                 this->message = message;
             }
             string getMessage() {
-                return this->getMessage();
+                return this->message;
             }
     };
 };

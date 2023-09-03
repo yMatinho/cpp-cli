@@ -1,13 +1,14 @@
 #include "iostream"
+#include "routes.h"
 #include "app/commands/StartProgram.h"
 #include <vector>
 #include <string>
 #include <stdio.h>
-#include "routes.h"
 
 using namespace std;
 int main(int argc, char *argv[]) {
-    Commands::StartProgram::start(argv);
+    routes();
+    Commands::StartProgram::start(argc, argv);
 
     return 1;
 }

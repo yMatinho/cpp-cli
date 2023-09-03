@@ -26,10 +26,11 @@ namespace Routes
         void insert(string index, Route *route);
         void remove(string index);
         bool isEmpty();
-        void executeRoute(string alias);
 
     public:
         static Router *get();
+        void executeRoute();
+        bool routeExists(string route);
         void setParams(char *params[]);
         template <typename T>
         void addRoute(string path, ControllerMethod<T> method)

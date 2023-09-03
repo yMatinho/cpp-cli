@@ -20,5 +20,5 @@ compile-run:
 	cmake .. && \
 	cmake --build . --config build_type && \
 	clear && \
-	./myprogram
+	./myprogram teste
 	

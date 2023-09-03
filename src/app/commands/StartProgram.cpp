@@ -3,23 +3,26 @@
 #include "../exceptions/BreakException.h"
 #include <iostream>
 #include "string"
+#include "../../routes/Router.h"
 
 using namespace std;
 using namespace Exceptions;
 using namespace Commands;
+using namespace Routes;
 
-void StartProgram::start(char *args[])
+void StartProgram::start(int argc, char *argv[])
 {
     try
     {
-        cout << "Hello world!";
+        Router::get()->setParams(argv);
+        Router::get()->executeRoute();
     }
     catch (BreakException *e)
     {
-        cout << "Saindo...";
+        cout << "Saindo..." << "\n\n";
     }
     catch (Exception *e)
     {
-        cout << e->getMessage();
+        cout << e->getMessage() << "\n\n";
     }
 }
