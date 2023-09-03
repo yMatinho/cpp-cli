@@ -6,11 +6,11 @@
 export SHELL := /bin/bash
 export SHELLOPTS := $(if $(SHELLOPTS),$(SHELLOPTS):)errexit:pipefail
 
-build:
+compile:
 	mkdir -p build && \
 	cd build && \
 	cmake .. && \
-	cmake --build .
+	cmake --build . --config build_type
 execute-program:
 	clear
 	./build/myprogram

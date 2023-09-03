@@ -15,5 +15,6 @@ namespace Requests
         Request(vector<string> params);
 
         string getParam(int index);
+        int getParamCount();
     };
 }

@@ -11,3 +11,7 @@ string Request::getParam(int index)
 {
     return this->params.at(index);
 }
+
+int Request::getParamCount() {
+    return this->params.size();
+}
