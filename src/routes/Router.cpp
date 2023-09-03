@@ -41,7 +41,7 @@ void Router::executeRoute()
 {
     const string requestedRoute = Router::get()->getRequestedRoute();
     if (!Router::get()->routeExists(requestedRoute))
-        throw new Exceptions::Exception("Rota não existe!");
+        throw new Exceptions::Exception("Invalid route!");
 
     Router::get()->routes[requestedRoute]->execute(*(new Request(Router::get()->params)));
 }
