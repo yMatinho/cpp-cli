@@ -5,7 +5,7 @@ using namespace Views;
 
 HelloWorldView::HelloWorldView() {}
 
-void HelloWorldView::render(map<string, any> *params, map<string, any> *modifiablePointers)
+void HelloWorldView::render(Requests::ViewRequest* viewRequest)
 {
     cout << "\n\n\nHello world again!\n\n\n";
 }
