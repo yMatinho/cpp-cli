@@ -14,7 +14,7 @@ void StartProgram::start(int argc, char *argv[])
 {
     try
     {
-        Router::get()->setParams(argv);
+        Router::get()->setParams(argc, argv);
         Router::get()->executeRoute();
     }
     catch (BreakException *e)

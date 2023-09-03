@@ -23,25 +23,37 @@ bool Router::isEmpty()
     return this->routes.size() <= 0;
 }
 
-void Router::setParams(char *params[])
+void Router::setParams(int paramsSize, char *params[])
 {
-    const int maxParameters = 10;
     vector<string> v;
 
-    for (int i = 1; i < maxParameters; ++i)
+    for (int i = 1; i < paramsSize; ++i)
     {
         if (params[i] != nullptr)
             v.push_back(params[i]);
     }
 
-    Router::get()->params = v;
+    if (this->params.size() > 0)
+        Router::get()->params = v;
 }
 
 void Router::executeRoute()
 {
-    if (!this->routeExists(this->params[0]))
+    const string requestedRoute = this->getRequestedRoute();
+    if (!this->routeExists(requestedRoute))
         throw new Exceptions::Exception("Rota não existe!");
-    this->routes[this->params[0]]->execute(*(new Request(this->params)));
+
+    this->routes[requestedRoute]->execute(*(new Request(this->params)));
+}
+
+string Router::getRequestedRoute()
+{
+    return this->hasPassedRoute() ? this->params[0] : DEFAULT_APP_ROUTE;
+}
+
+bool Router::hasPassedRoute()
+{
+    return this->params.size() > 0;
 }
 
 bool Router::routeExists(string route)

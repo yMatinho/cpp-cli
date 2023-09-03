@@ -16,6 +16,7 @@ using namespace Requests;
 
 namespace Routes
 {
+    const string DEFAULT_APP_ROUTE = "index";
     class Router
     {
     private:
@@ -26,15 +27,19 @@ namespace Routes
         void insert(string index, Route *route);
         void remove(string index);
         bool isEmpty();
+        bool hasPassedRoute();
+        string getRequestedRoute();
 
     public:
         static Router *get();
         void executeRoute();
         bool routeExists(string route);
-        void setParams(char *params[]);
+        void setParams(int paramsSize, char *params[]);
         template <typename T>
         void addRoute(string path, ControllerMethod<T> method)
         {
+            if(path == "")
+                path = DEFAULT_APP_ROUTE;
             Route* route = new Route(path);
             route->setMethod<T>(method);
             Router::get()->insert(path, route);
