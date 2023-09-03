@@ -1,4 +1,6 @@
 #include "string"
+#include "algorithm"
+#include "random"
 
 using namespace std;
 
@@ -23,6 +25,15 @@ namespace Facades
             }
 
             return tmp_s;
+        }
+        string randomizeString(string inputString)
+        {
+            std::random_device rd;
+            std::mt19937 gen(rd());
+
+            std::shuffle(inputString.begin(), inputString.end(), gen);
+
+            return inputString;
         }
     };
 }

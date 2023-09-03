@@ -13,4 +13,5 @@ void routes()
                                               &App::Controllers::GradesController::calculateAverageUsingInputs);
     Router::get()->addRoute<HelloWorldController>("", &App::Controllers::HelloWorldController::hello);
     Router::get()->addRoute<EncryptController>("encrypt", &App::Controllers::EncryptController::encrypt);
+    Router::get()->addRoute<EncryptController>("random-alphabet", &App::Controllers::EncryptController::randomAlphabet);
 }

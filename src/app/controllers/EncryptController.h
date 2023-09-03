@@ -14,6 +14,7 @@ namespace App
         public:
             EncryptController() : Controller() {}
             void encrypt(Request req);
+            void randomAlphabet(Request req);
         };
     }
 }
