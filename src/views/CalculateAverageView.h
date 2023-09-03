@@ -14,6 +14,7 @@ namespace Views
     public:
         CalculateAverageView();
 
-        void render(map<string, any> *params = nullptr, map<string, any *> *modifiablePointers = nullptr) override;
+        void render(map<string, any> *params = nullptr, map<string, any> *modifiablePointers = nullptr) override;
+        void inputGrades(map<string, any> *params = nullptr, map<string, any> *modifiablePointers = nullptr);
     };
 }

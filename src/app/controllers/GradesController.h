@@ -11,9 +11,11 @@ namespace App
         class GradesController : public Controller
         {
         private:
+        float getAverage(vector<float> grades);
         public:
             GradesController() : Controller() {}
             void calculateAverage(Request req);
+            void calculateAverageUsingInputs(Request req);
         };
     }
 }

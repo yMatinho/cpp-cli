@@ -13,6 +13,6 @@ namespace Views
     public:
         HelloWorldView();
 
-        void render(map<string, any> *params = nullptr, map<string, any *> *modifiablePointers = nullptr) override;
+        void render(map<string, any> *params = nullptr, map<string, any> *modifiablePointers = nullptr) override;
     };
 }
