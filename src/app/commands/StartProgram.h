@@ -7,6 +7,6 @@ namespace Commands
     class StartProgram
     {
     public:
-        static void start(int argc, char *argv[]);
+        static void start(int argc, char *argv[], bool executionTime=false);
     };
 };

@@ -8,7 +8,7 @@
 using namespace std;
 int main(int argc, char *argv[]) {
     routes();
-    Commands::StartProgram::start(argc, argv);
+    Commands::StartProgram::start(argc, argv, true);
 
     return 1;
 }
